@@ -1,0 +1,41 @@
+[{
+    "name": "Manage Pods",
+    "id": 100,
+    "actions": [{
+
+        "name": "Describe a Pod",
+        "key": "describe",
+        "id": 101
+    },
+    {
+
+        "name": "Create a deployment",
+        "key": "create",
+        "id": 102
+    },
+    {
+        "name": "Update pods",
+        "key": "update",
+        "id": 103
+    },
+    {
+        "name": "Deploy Ubuntu Pod",
+        "key": "deploy",
+        "id": 103
+    },
+    {
+        "name": "Delete a deployment",
+        "key": "delete",
+        "id": 103
+    }
+]
+},
+{
+    "name": "Run a pre-defined scenario",
+    "id": 200
+},
+{
+    "name": "Exit",
+    "id": 400
+}
+]
