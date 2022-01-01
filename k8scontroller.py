@@ -84,7 +84,9 @@ class K8SController:
     # This method deploys an ubuntu pod
     def __deploy_ubuntu(self):
         podName=ConsoleHelper.get_alphanumeric_input("Please enter the pod name:\t")
-        os.system("ls")
+        command=ConsoleHelper.get_alphanumeric_input("Please enter the command to run on the pod:\t")
+        os.system(f"kubectl run {podName} --image=ubuntu --command {command}")
+        print(f"To see the command is run, please run 'kubectl logs {podName}' after the pod creation is completed")
     # ------------------------------------------------------------------------------------------------------------
     # This method deploys an ubuntu pod
     def __delete_deployment(self):
