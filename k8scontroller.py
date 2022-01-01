@@ -55,8 +55,13 @@ class K8SController:
     # ------------------------------------------------------------------------------------------------------------
     # This method creates a deployment with 2 pods.
     def __create_deployment(self):
-        image=ConsoleHelper.get_number_input(1,2,"Please select image,\n 1. nginx:1.20\t2. couchbase:6.0.5\n > ")
-        os.system("ls")
+        selectecIndex=ConsoleHelper.get_number_input(1,2,"Please select image,\n 1. nginx:1.20\t2. couchbase:6.0.5\n > ")
+        if selectecIndex==1:
+            os.system("kubectl create -f nginx-deploy.yaml")
+            ConsoleHelper.print_success("2 pods of nginx is deployed!")
+        else:
+            os.system("kubectl create -f couchbase-deploy.yaml")
+            ConsoleHelper.print_success("2 pods of couchbase is deployed!")
     # ------------------------------------------------------------------------------------------------------------
     # This method updates a deployment
     def __update_deployment(self):
