@@ -55,7 +55,6 @@ class K8SController:
     # ------------------------------------------------------------------------------------------------------------
     # This method creates a deployment with 2 pods.
     def __create_deployment(self):
-        podName=ConsoleHelper.get_alphanumeric_input("Please enter the pod name:\t")
         image=ConsoleHelper.get_number_input(1,2,"Please select image,\n 1. nginx:1.20\t2. couchbase:6.0.5\n > ")
         os.system("ls")
     # ------------------------------------------------------------------------------------------------------------

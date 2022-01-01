@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: couchbase-deploy
+  labels:
+    app: couchbase-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: couchbase-app
+  template:
+    metadata:
+      name: couchbase-pod
+      labels:
+        app: couchbase-app
+    spec:
+      containers:
+      - name: couchbase-container
+        image: couchbase:6.0.5
+        ports:
+        - containerPort: 80
