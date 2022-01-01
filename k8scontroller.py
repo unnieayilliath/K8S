@@ -34,6 +34,8 @@ class K8SController:
             elif selectedAction["key"]== "create":
                     self.__create_deployment()
             elif selectedAction["key"]== "update":
+                    ConsoleHelper.clear()
+                    ConsoleHelper.append_breadcrumb(selectedAction["name"])
                     self.__update_deployment()
             elif selectedAction["key"]== "deploy":
                     self.__deploy_ubuntu()
@@ -58,15 +60,26 @@ class K8SController:
         selectecIndex=ConsoleHelper.get_number_input(1,2,"Please select image,\n 1. nginx:1.20\t2. couchbase:6.0.5\n > ")
         if selectecIndex==1:
             os.system("kubectl create -f nginx-deploy.yaml")
-            ConsoleHelper.print_success("2 pods of nginx is deployed!")
         else:
             os.system("kubectl create -f couchbase-deploy.yaml")
-            ConsoleHelper.print_success("2 pods of couchbase is deployed!")
     # ------------------------------------------------------------------------------------------------------------
     # This method updates a deployment
     def __update_deployment(self):
-        podName=ConsoleHelper.get_alphanumeric_input("Please enter the pod name:\t")
-        os.system("ls")
+        # list existing deployments
+        os.system("kubectl get deployments -o wide")
+        loop=True
+        while loop:
+            deploymentName=ConsoleHelper.get_alphanumeric_input("Please enter the deployment name:\t")
+            if deploymentName=="nginx-deploy":
+                print("Updating nginx deployment image to nginx:1.21.5")
+                os.system("kubectl set image deployment/nginx-deploy nginx-container=nginx:1.21.5")
+                loop=False
+            elif deploymentName=="couchbase-deploy":
+                print("Updating couchbase deployment image to couchbase:6.6.4")
+                os.system("kubectl set image deployment/couchbase-deploy couchbase-container=couchbase:6.6.4")
+                loop=False
+            else:
+                ConsoleHelper.print_warning("This deployment cannot be updated. Please choose nginx-deploy or couchbase-deploy")
     # ------------------------------------------------------------------------------------------------------------
     # This method deploys an ubuntu pod
     def __deploy_ubuntu(self):
