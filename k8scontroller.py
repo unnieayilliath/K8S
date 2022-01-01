@@ -9,6 +9,8 @@ class K8SController:
     def run_predefined_scenario(self):
         print("Running a pre-defined scenario based on sample from https://github.com/dockersamples/k8s-wordsmith-demo ")
         os.system("kubectl create -f wordsmith-deploy.yaml")
+        input("Press any key to continue..")
+
     # --------------------------------------------------------------------------------------------------
     # This is the main method for this controller
     def load_screen(self):
