@@ -86,6 +86,7 @@ spec:
   ports:
     - nodePort: 31000
       port: 8081
+      protocol: TCP
       targetPort: 80
       name: web
 ---
