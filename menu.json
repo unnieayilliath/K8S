@@ -9,12 +9,12 @@
     },
     {
 
-        "name": "Create a deployment",
+        "name": "Create deployment",
         "key": "create",
         "id": 102
     },
     {
-        "name": "Update pods",
+        "name": "Update Deployment",
         "key": "update",
         "id": 103
     },

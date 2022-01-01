@@ -35,11 +35,11 @@ class K8SController:
                     self.__create_deployment()
             elif selectedAction["key"]== "update":
                     ConsoleHelper.clear()
-                    ConsoleHelper.append_breadcrumb(selectedAction["name"])
                     self.__update_deployment()
             elif selectedAction["key"]== "deploy":
                     self.__deploy_ubuntu()
             else:
+                    ConsoleHelper.clear()
                     self.__delete_deployment()
         except Exception as ex:
             ConsoleHelper.print_error(ex)
@@ -88,8 +88,10 @@ class K8SController:
     # ------------------------------------------------------------------------------------------------------------
     # This method deploys an ubuntu pod
     def __delete_deployment(self):
-        deploymentName=ConsoleHelper.get_alphanumeric_input("Please enter the deployment to delete:\t")
-        os.system("ls")
+        # list existing deployments
+        os.system("kubectl get deployments -o wide")
+        deploymentName=ConsoleHelper.get_alphanumeric_input("Please enter the deployment name:\t")
+        os.system(f"kubectl delete deploy {deploymentName}")
     # ------------------------------------------------------------------------------------------------------------
     # This method runs a predfined scenario
     def __run_predfined_scenario(self):
