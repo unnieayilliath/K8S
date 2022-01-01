@@ -16,7 +16,7 @@ class K8SController:
     # -------------------------------------------------------------------------------------------------
     # This protected method returns all containers
     def __list_pods(self):
-       os.system("ls")
+       os.system("kubectl get pods -o wide")
     # ------------------------------------------------------------------------------------------------
     # This method allows user to select an action
     def __perform_action(self):
