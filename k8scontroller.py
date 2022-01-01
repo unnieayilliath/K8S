@@ -96,7 +96,7 @@ class K8SController:
         os.system(f"kubectl delete deploy {deploymentName}")
     # ------------------------------------------------------------------------------------------------------------
     # This method runs a predfined scenario
-    def run_predfined_scenario(self):
+    def run_predefined_scenario(self):
         print("Running a pre-defined scenario based on sample from https://github.com/dockersamples/k8s-wordsmith-demo ")
         os.system("kubectl create -f wordsmith-deploy.yaml")
   

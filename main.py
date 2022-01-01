@@ -25,7 +25,7 @@ class Main():
         if selectedNav["id"] ==100:
                 self._k8sCtrl.load_screen()
         elif selectedNav["id"] ==200:
-            self._k8sCtrl.run_predfined_scenario()
+            self._k8sCtrl.run_predefined_scenario()
         else:
                 # exit the application
                 confirm = ConsoleHelper.get_yes_no_input(
