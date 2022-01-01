@@ -12,7 +12,6 @@ spec:
       name: db
   selector:
     app: words-db
-  clusterIP: None
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -21,6 +20,7 @@ metadata:
   labels:
     app: words-db
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: words-db
@@ -49,7 +49,6 @@ spec:
       name: api
   selector:
     app: words-api
-  clusterIP: None
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -58,7 +57,7 @@ metadata:
   labels:
     app: words-api
 spec:
-  replicas: 5
+  replicas: 2
   selector:
     matchLabels:
       app: words-api
@@ -82,12 +81,13 @@ metadata:
     app: words-web
 spec:
   ports:
-    - port: 8081
+    - nodePort:31000
+      port: 8081
       targetPort: 80
       name: web
   selector:
     app: words-web
-  type: LoadBalancer
+  type: NodePort
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -96,6 +96,7 @@ metadata:
   labels:
     app: words-web
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: words-web

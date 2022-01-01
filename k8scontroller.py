@@ -4,7 +4,11 @@ import os
  # -------------------------------------------------------------------------------------------------
  # A class for controlling interactions with the K8S
 class K8SController:
-   
+    # ------------------------------------------------------------------------------------------------------------
+    # This method runs a predfined scenario
+    def run_predefined_scenario(self):
+        print("Running a pre-defined scenario based on sample from https://github.com/dockersamples/k8s-wordsmith-demo ")
+        os.system("kubectl create -f wordsmith-deploy.yaml")
     # --------------------------------------------------------------------------------------------------
     # This is the main method for this controller
     def load_screen(self):
@@ -94,11 +98,7 @@ class K8SController:
         os.system("kubectl get deployments -o wide")
         deploymentName=ConsoleHelper.get_alphanumeric_input("Please enter the deployment name:\t")
         os.system(f"kubectl delete deploy {deploymentName}")
-    # ------------------------------------------------------------------------------------------------------------
-    # This method runs a predfined scenario
-    def run_predefined_scenario(self):
-        print("Running a pre-defined scenario based on sample from https://github.com/dockersamples/k8s-wordsmith-demo ")
-        os.system("kubectl create -f wordsmith-deploy.yaml")
+    
   
   
    
