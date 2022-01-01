@@ -29,16 +29,15 @@ class K8SController:
             # add the page to the breadcrumb
             ConsoleHelper.append_breadcrumb(selectedAction["name"])
         try:
-            match selectedAction["key"]:
-                case "describe":
+            if selectedAction["key"]=="describe":
                     self.__describe_pod()
-                case "create":
+            elif selectedAction["key"]== "create":
                     self.__create_deployment()
-                case "update":
+            elif selectedAction["key"]== "update":
                     self.__update_deployment()
-                case "deploy":
+            elif selectedAction["key"]== "deploy":
                     self.__deploy_ubuntu()
-                case "delete":
+            else:
                     self.__delete_deployment()
         except Exception as ex:
             ConsoleHelper.print_error(ex)
@@ -52,7 +51,7 @@ class K8SController:
     # This method describes a pod
     def __describe_pod(self):
         podName=ConsoleHelper.get_alphanumeric_input("Please enter the pod name:\t")
-        os.system("ls")
+        os.system(f"kubectl describe pod {podName}")
     # ------------------------------------------------------------------------------------------------------------
     # This method creates a deployment with 2 pods.
     def __create_deployment(self):

@@ -22,12 +22,11 @@ class Main():
     # -------------------------------------------------------------------------------
     # Open the screen corresponding to the menu selection
     def load_screen(self,selectedNav):
-        match selectedNav["id"]:
-            case 100:
+        if selectedNav["id"] ==100:
                 self._k8sCtrl.load_screen()
-            case 200:
-                self._k8sCtrl.__run_predfined_scenario()
-            case 400:
+        elif selectedNav["id"] ==200:
+            self._k8sCtrl.__run_predfined_scenario()
+        else:
                 # exit the application
                 confirm = ConsoleHelper.get_yes_no_input(
                     "Are you sure to quit? (Y/N) \t")
